@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area 11 - Catálogo Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1e7e34;
+            --secondary-color: #111;
+            --accent-color: #f1c40f;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        h1, h2, h3, .btn { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* --- BOTÓN WHATSAPP FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 50px; width: auto; object-fit: contain; }
+        .brand-name { font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+
+        .header-edit-btn {
+            display: none;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .hero-overlay {
+            background: rgba(0,0,0,0.5);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+        .hero-title { font-size: 3rem; margin-bottom: 10px; }
+
+        .banner-edit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            display: none;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--secondary-color); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; }
+        .product-img-box { height: 250px; position: relative; background: #eee; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .status-badge.sold-out { background: #c0392b; }
+
+        .product-info { padding: 20px; text-align: center; }
+        .product-name { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; height: 50px; overflow: hidden; }
+        .product-price { font-size: 1.4rem; color: var(--primary-color); font-weight: bold; margin-bottom: 15px; }
+        
+        .btn-view {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .product-edit-btn { display: none; width: 100%; background: #e67e22; color: white; border: none; padding: 10px; cursor: pointer; }
+
+        footer { background: var(--secondary-color); color: #888; padding: 40px 20px; text-align: center; margin-top: 60px; }
+        .admin-access { margin-top: 20px; display: inline-flex; gap: 10px; align-items: center; }
+        .admin-access input { padding: 8px; border-radius: 4px; border: none; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; width: 90%; position: relative; }
+        .close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+
+        body.admin-mode .header-edit-btn, 
+        body.admin-mode .banner-edit-btn, 
+        body.admin-mode .product-edit-btn,
+        body.admin-mode .admin-indicator { display: block; }
+        
+        .admin-indicator {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            z-index: 999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/526121174569" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/33/33736.png" alt="Logo" id="siteLogo" class="logo-img">
+            <span class="brand-name">AREA 11</span>
+            <button class="header-edit-btn" onclick="openGlobalEdit()">Cambiar Logo</button>
+        </div>
+        <nav><span style="font-style: italic; color: white;">Pasión por el fútbol</span></nav>
+    </header>
+
+    <div class="hero-banner" id="heroBanner">
+        <button class="banner-edit-btn" onclick="openGlobalEdit()"><i class="fas fa-camera"></i> Editar Banner</button>
+        <div class="hero-overlay">
+            <h1 class="hero-title">AREA 11 CATALOG</h1>
+            <p class="hero-subtitle" style="color: white;">Equipamiento de alto rendimiento</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="product-grid" id="productContainer"></div>
+    </div>
+
+    <div class="admin-indicator" onclick="exitAdmin()">MODO ADMIN ACTIVO ✖</div>
+
+    <footer>
+        <p>© 2026 Area 11 - Catálogo de exhibición.</p>
+        <div class="admin-access">
+            <input type="password" id="discountCode" placeholder="Código de 8 dígitos">
+            <button onclick="checkCode()" style="padding:8px 15px; background:var(--primary-color); color:white; border:none; cursor:pointer;">Entrar</button>
+        </div>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <span class="close-modal" onclick="closeModal('productModal')">&times;</span>
+            <h3>Configurar Producto</h3>
+            <input type="hidden" id="editId">
+            <div class="form-group"><label>Nombre:</label><input type="text" id="editName"></div>
+            <div class="form-group"><label>Precio ($):</label><input type="number" id="editPrice"></div>
+            <div class="form-group"><label>Imagen URL:</label><input type="text" id="editImage"></div>
+            <div class="form-group">
+                <label>Características (separa con comas):</label>
+                <textarea id="editDesc"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Stock:</label>
+                <select id="editAvailable"><option value="true">Disponible</option><option value="false">Agotado</option></select>
+            </div>
+            <button onclick="saveProduct()" style="width:100%; padding:10px; background:var(--primary-color); color:white; border:none; cursor:pointer;">GUARDAR</button>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content" style="max-width: 850px;">
+            <span class="close-modal" onclick="closeModal('detailsModal')">&times;</span>
+            <div id="detailsContent"></div>
+        </div>
+    </div>
+
+    <div id="globalModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-modal" onclick="closeModal('globalModal')">&times;</span>
+            <h3>Apariencia del Sitio</h3>
+            <div class="form-group"><label>URL Logo:</label><input type="text" id="globalLogoUrl"></div>
+            <div class="form-group"><label>URL Banner:</label><input type="text" id="globalBannerUrl"></div>
+            <button onclick="saveGlobal()" style="width:100%; padding:10px; background:var(--primary-color); color:white; border:none; cursor:pointer;">ACTUALIZAR</button>
+        </div>
+    </div>
+
+    <script>
+        const defaultProducts = [
+            { id: 1, name: "Jersey Brasil 2025 Stadium", price: 1899, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Ajuste estándar, Tecnología Dri-FIT, Escudo bordado", available: true },
+            { id: 2, name: "Balón Elite Match", price: 950, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Costuras termoselladas, Vuelo aerodinámico", available: true }
+        ];
+
+        let products = JSON.parse(localStorage.getItem('area11_products')) || defaultProducts;
+        let siteConfig = JSON.parse(localStorage.getItem('area11_config')) || {
+            logo: "https://cdn-icons-png.flaticon.com/512/33/33736.png",
+            banner: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1935&auto=format&fit=crop"
+        };
+
+        function renderProducts() {
+            const container = document.getElementById('productContainer');
+            container.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <span class="status-badge ${p.available ? '' : 'sold-out'}">${p.available ? 'Disponible' : 'Agotado'}</span>
+                        <img src="${p.img}" class="product-img" style="${p.available ? '' : 'filter:grayscale(1)'}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${p.name}</h3>
+                        <p class="product-price">$${p.price}</p>
+                        <a href="#" class="btn-view" onclick="showDetails(${p.id}); return false;">Ver Detalles</a>
+                    </div>
+                    <button class="product-edit-btn" onclick="editProduct(${p.id})">EDITAR</button>
+                </div>
+            `).join('');
+        }
+
+        function showDetails(id) {
+            const p = products.find(i => i.id === id);
+            const features = (p.desc || "Calidad profesional").split(',').map(f => `<li>${f.trim()}</li>`).join('');
+            
+            // Mensaje personalizado para WhatsApp con tu número
+            const waMsg = encodeURIComponent(`¡Hola Area 11! Me interesa este producto: ${p.name}`);
+
+            document.getElementById('detailsContent').innerHTML = `
+                <div style="display:flex; flex-wrap:wrap; gap:30px;">
+                    <div style="flex:1; min-width:280px;"><img src="${p.img}" style="width:100%; border-radius:8px;"></div>
+                    <div style="flex:1.2; min-width:280px;">
+                        <h4 style="color:#888;">AREA 11 EXCLUSIVE</h4>
+                        <h1 style="font-size:2.5rem; margin:10px 0;">${p.name}</h1>
+                        <p style="font-size:1.5rem; font-weight:bold; color:var(--primary-color);">$${p.price}</p>
+                        <div style="margin:20px 0; padding:15px; background:#f8f8f8; border-radius:8px;">
+                            <h3 style="font-size:1rem; border-bottom:2px solid var(--primary-color); display:inline-block;">CARACTERÍSTICAS</h3>
+                            <ul style="margin-top:10px; padding-left:20px; line-height:1.6;">${features}</ul>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                            <a href="https://wa.me/526121174569?text=${waMsg}" target="_blank" 
+                               style="background: #25d366; color: white; text-align: center; padding: 15px; border-radius: 30px; text-decoration: none; font-family: 'Oswald'; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                <i class="fab fa-whatsapp"></i> PREGUNTAR POR WHATSAPP
+                            </a>
+                            <button onclick="closeModal('detailsModal')" style="width:100%; padding:12px; background:#111; color:white; border:none; border-radius:30px; cursor:pointer; font-family:'Oswald';">VOLVER AL MENÚ PRINCIPAL</button>
+                        </div>
+                    </div>
+                </div>`;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function checkCode() {
+            if (document.getElementById('discountCode').value === "24061026") {
+                document.body.classList.add('admin-mode');
+                alert("Modo Admin Activado");
+            } else { alert("Código incorrecto"); }
+        }
+
+        function exitAdmin() { document.body.classList.remove('admin-mode'); alert("Sesión cerrada"); }
+        
+        function editProduct(id) {
+            const p = products.find(i => i.id === id);
+            document.getElementById('editId').value = p.id;
+            document.getElementById('editName').value = p.name;
+            document.getElementById('editPrice').value = p.price;
+            document.getElementById('editImage').value = p.img;
+            document.getElementById('editDesc').value = p.desc || "";
+            document.getElementById('editAvailable').value = p.available.toString();
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function saveProduct() {
+            const id = parseInt(document.getElementById('editId').value);
+            const index = products.findIndex(p => p.id === id);
+            products[index] = {
+                id,
+                name: document.getElementById('editName').value,
+                price: document.getElementById('editPrice').value,
+                img: document.getElementById('editImage').value,
+                desc: document.getElementById('editDesc').value,
+                available: document.getElementById('editAvailable').value === "true"
+            };
+            localStorage.setItem('area11_products', JSON.stringify(products));
+            renderProducts();
+            closeModal('productModal');
+        }
+
+        function openGlobalEdit() {
+            document.getElementById('globalLogoUrl').value = siteConfig.logo;
+            document.getElementById('globalBannerUrl').value = siteConfig.banner;
+            document.getElementById('globalModal').style.display = 'flex';
+        }
+
+        function saveGlobal() {
+            siteConfig = { logo: document.getElementById('globalLogoUrl').value, banner: document.getElementById('globalBannerUrl').value };
+            localStorage.setItem('area11_config', JSON.stringify(siteConfig));
+            applyConfig();
+            closeModal('globalModal');
+        }
+
+        function applyConfig() {
+            document.getElementById('siteLogo').src = siteConfig.logo;
+            document.getElementById('heroBanner').style.backgroundImage = `url('${siteConfig.banner}')`;
+        }
+
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
+        applyConfig();
+        renderProducts();
+    </script>
+</body>
+</html>
