@@ -261,30 +261,33 @@
     <script>
         // Busca esta parte en tu script y reemplázala:
 const defaultProducts = [
-    { id: 1, name: "Jersey Real Madrid Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 2, name: "Jersey Barcelona Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 3, name: "Jersey Bayern Munich Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 4, name: "Jersey América Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
-    { id: 5, name: "Jersey Chivas Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
-    { id: 6, name: "Jersey Cruz Azul Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 7, name: "Jersey Real Madrid Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 8, name: "Jersey Barcelona Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 9, name: "Jersey Bayern Munich Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 10, name: "Jersey América Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
-    { id: 11, name: "Jersey Chivas Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
-    { id: 12, name: "Jersey Cruz Azul Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 13, name: "Jersey Real Madrid Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 14, name: "Jersey Barcelona Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 15, name: "Jersey Bayern Munich Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 16, name: "Jersey América Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
-    { id: 17, name: "Jersey Chivas Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
-    { id: 18, name: "Jersey Cruz Azul Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 19, name: "Jersey Real Madrid Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 20, name: "Jersey Barcelona Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 21, name: "Jersey Bayern Munich Local 25/26 Champions League", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
-    { id: 22, name: "Jersey América Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
-    { id: 23, name: "Jersey Chivas Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
-    { id: 24, name: "Jersey Cruz Azul Local 25/26", price: 600, img: "https://images.unsplash.com/photo-1552318970-d884f0798e4c?auto=format&fit=crop&w=500", desc: "Jersey de alta calidad", available: true },
+    { id: 1, name: "Jersey Selección Mexicana Mundial 2026 Aficionado", price: 600, img: "https://ibb.co/3YSgmCZ6", desc: "Jersey de alta calidad", available: true },
+    { id: 2, name: "Jersey Selección Argentina Mundial 2026", price: 600, img: "https://ibb.co/tTqxbCSR ", desc: "Jersey de alta calidad", available: true },
+    { id: 3, name: "Jersey Barelona 25/26 Champions League", price: 600, img: "https://ibb.co/99HJSJxw", desc: "Jersey de alta calidad", available: true },
+    { id: 4, name: "Jersey Bayern Munich Local 25/26 Champions League", price: 600, img: "https://ibb.co/bM000GJP", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
+    { id: 5, name: "Jersey Chivas Local 25/26", price: 600, img: "https://ibb.co/1YM1kPTM", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
+    { id: 6, name: "Jersey América Local 25/26", price: 600, img: "https://ibb.co/WpNbbzt9", desc: "Jersey de alta calidad", available: true },
+    { id: 7, name: "Jersey Milan Local 25/26", price: 600, img: "https://ibb.co/gL8Gn4Vj", desc: "Jersey de alta calidad", available: true },
+    { id: 8, name: "Jersey Inter Milan Local 25/26", price: 600, img: "https://ibb.co/chxtk9B2", desc: "Jersey de alta calidad", available: true },
+    { id: 9, name: "Jersey Brasil Local 24/25", price: 600, img: "https://ibb.co/wF392x2y", desc: "Jersey de alta calidad", available: true },
+    { id: 10, name: "Jersey Brasil VIsita 24/25", price: 600, img: "https://ibb.co/B26WYhyg", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
+    { id: 11, name: "Jersey Brasil Edición Especial", price: 600, img: "https://ibb.co/s9WNWWxp", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
+    { id: 12, name: "Jersey Cruz Azul Local 25/26", price: 600, img: "https://ibb.co/35BxPpXM", desc: "Jersey de alta calidad", available: true },
+    { id: 13, name: "Jersey Cruz Azul Visita 25/26", price: 600, img: "https://ibb.co/TBNw9YwX", desc: "Jersey de alta calidad", available: true },
+    { id: 14, name: "Jersey Atlas Local 25/26", price: 600, img: "https://ibb.co/rGWh29gg", desc: "Jersey de alta calidad", available: true },
+    { id: 15, name: "Jersey Inter Miami Local 25/26", price: 600, img: "https://ibb.co/4BrqnfV", desc: "Jersey de alta calidad", available: true },
+    { id: 16, name: "Jersey Psg Local 25/26", price: 600, img: "https://ibb.co/rGnw0Snh", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
+    { id: 17, name: "Jersey Monterrey Local 25/26", price: 600, img: "https://ibb.co/DPPwYRb2", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
+    { id: 18, name: "Jersey Manchester United Local 25/26", price: 600, img: "https://ibb.co/zhDcD7mP", desc: "Jersey de alta calidad", available: true },
+    { id: 19, name: "Jersey Juventus Local 25/26 Champions League", price: 600, img: "https://ibb.co/7dk5zk3H", desc: "Jersey de alta calidad", available: true },
+    { id: 20, name: "Jersey América Visita 25/26", price: 600, img: "https://ibb.co/SwJ80Jmt", desc: "Jersey de alta calidad", available: true },
+    { id: 21, name: "Jersey Francia Femenil Local 25/26", price: 600, img: "https://ibb.co/67FnL0DG", desc: "Jersey de alta calidad", available: true },
+    { id: 22, name: "Jersey Pumas Local 25/26", price: 600, img: "https://ibb.co/3YL5BwMc", desc: "Jersey de alta calidad", available: true }, // Se agregó coma y llave
+    { id: 23, name: "Jersey Boca Local 25/26", price: 600, img: "https://ibb.co/TBzx5xqF", desc: "Jersey de alta calidad", available: true }, // Se agregó coma
+    { id: 24, name: "Jersey Brasil Retro", price: 600, img: "https://ibb.co/67JpjZ59", desc: "Jersey de alta calidad", available: true },
+    { id: 25, name: "Jersey México Retro", price: 600, img: "https://ibb.co/FbLfBSYn", desc: "Jersey de alta calidad", available: true },
+    { id: 26, name: "Jersey Chealsea Local 25/26 Champions League", price: 600, img: "https://ibb.co/C3Htb8bk", desc: "Jersey de alta calidad", available: true },
+    { id: 27, name: "Jersey Barcelona Visita 25/26 Champions League", price: 600, img: "https://ibb.co/yBnF8T5V", desc: "Jersey de alta calidad", available: true },
 ];
 
         let products = JSON.parse(localStorage.getItem('area11_products')) || defaultProducts;
@@ -402,4 +405,5 @@ const defaultProducts = [
     </script>
 </body>
 </html>
+
 
